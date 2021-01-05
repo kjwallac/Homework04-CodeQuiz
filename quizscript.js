@@ -1,6 +1,5 @@
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('choice-text'));
-console.log(choices);
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -60,7 +59,6 @@ startQuiz = () => {
     questionCounter = 0;
     scores = 0;
     availableQuestions = [ ... questions];
-    console.log(availableQuestions);
     getNewQuestion();
 };
 
@@ -80,20 +78,31 @@ getNewQuestion = () => {
     });
 
     availableQuestions.splice(questionIndex, 1);
-
     acceptingAnswers = true;
 };
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
-        if(!acceptingAnswers) return;
+        if (!acceptingAnswers) return;
         
         acceptingAnswers = false;
         const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset['number'];
+        const selectedAnswer = selectedChoice.dataset["number"];
 
-        getNewQuestion();
+        //apply incorrect class as default. Change to correct if selected answer matches correct answer
+        let classToApply = 'incorrect';
+        if (selectedAnswer == currentQuestion.answer) {
+            classToApply = 'correct';
+        }
+        
+        selectedChoice.parentElement.classList.add(classToApply);
 
+        setTimeout( () => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+        }, 1000);
+
+        
     });
 });
 
