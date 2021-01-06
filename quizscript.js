@@ -65,7 +65,7 @@ startQuiz = () => {
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         //go to the high score page
-        return window.location.assign/('/highscore.html');
+        return window.location.assign('highscore.html');
     }
     questionCounter++;    
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -106,24 +106,22 @@ choices.forEach(choice => {
     });
 });
 
+
 //Timer
-var timeEl = document.querySelector(".timer");
-
-var secondsLeft = 60;
-
-function setTime() {
-  var timerInterval = setInterval(
-    
-    function() {
-    secondsLeft--;
-    timeEl.textContent = "Time: " + secondsLeft;
-
-    if(secondsLeft === 0) {
-      clearInterval(timerInterval);
+(function() {
+    var sec = 60;
+    function startTimer(){
+        console.log('timer suppose to go')
+        var timer = setInterval(function(){
+            sec--;
+            document.getElementById('timerDisplay').innerHTML='00:'+sec;
+            if (sec < 0) {
+                clearInterval(timer);
+            }
+        }, 1000);
     }
-
-  }, 1000);
-}
+    startTimer();
+})();
 
 
 startQuiz();
