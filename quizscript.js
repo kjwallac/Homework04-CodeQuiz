@@ -1,5 +1,6 @@
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('choice-text'));
+const scoreText = document.getElementById('score');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -52,8 +53,8 @@ let questions = [
   ];
 
 //Constants
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 5
+const points = 10;
+const maxQ = 5
 
 startQuiz = () => {
     questionCounter = 0;
@@ -63,9 +64,10 @@ startQuiz = () => {
 };
 
 getNewQuestion = () => {
-    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    if (availableQuestions.length === 0 || questionCounter >= maxQ) {
+        localStorage.setItem('mostRecentScore', score);
         //go to the high score page
-        return window.location.assign('highscore.html');
+        return window.location.assign('end.html');
     }
     questionCounter++;    
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -94,7 +96,11 @@ choices.forEach(choice => {
         if (selectedAnswer == currentQuestion.answer) {
             classToApply = 'correct';
         }
-        
+
+          if(classToApply === 'correct') {
+              incrementScore(points);
+          }
+
         selectedChoice.parentElement.classList.add(classToApply);
 
         setTimeout( () => {
@@ -114,15 +120,22 @@ choices.forEach(choice => {
         console.log('timer suppose to go')
         var timer = setInterval(function(){
             sec--;
-            document.getElementById('timerDisplay').innerHTML='00:'+sec;
+            document.getElementById('timer').innerHTML='00:'+sec;
             if (sec < 0) {
                 clearInterval(timer);
+                alert("Time is up!")
             }
         }, 1000);
     }
+    // document.getElementById('incorrect').addEventListener('click', function() {
+    //     sec -= 10;
+    //     document.getElementById('timer').innerHTML='00:'+sec;
+    // });
     startTimer();
 })();
 
-
+incrementScore = num => {
+    score += num;
+    scoreText.innerText = score;
+};
 startQuiz();
-setTime();

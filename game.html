@@ -8,11 +8,26 @@
     <link rel="stylesheet" href='game.css'>
 </head>
 <body>
-    <div id="timerDisplay"></div>
-    <button id="incorrect">Simulate Incorrect Answer</button>
-
     <div class="container">
         <div id="game" class="justify-center flex-column">
+            <div id="hud">
+                <div id="hud-item">
+                    <p class="hud-prefix">
+                        Score
+                    </p>
+                    <h2 class="hud-main-text" id="score">
+                        0
+                    </h2>
+                </div>
+                <div id="hud-timer">
+                    <p class="hud-prefix">
+                        Timer
+                    </p>
+                    <h2 class="hud-timer-display" id="timer"></h2>
+                </div>
+            </div>
+            
+
             <h2 id="question">What is the answer to this question?</h2>
             
             <div class="choice-container">
