@@ -9,12 +9,11 @@ finalScore.innerText = mostRecentScore;
 
 localStorage.setItem("highScores", JSON.stringify([]));
 
-initials.addEventListener('keyup', () => {
+initials.addEventListener('keyup', function() {
     saveScoreBtn.disabled = !initials.value;
 });
 
 saveHighScore = e => {
-    console.log("clicked he button!");
     e.preventDefault();
 
     const score = {
