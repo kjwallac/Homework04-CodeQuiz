@@ -1,5 +1,6 @@
 const highScoresList = document.getElementById("highScoresList");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+const clearHighScores = document.getElementById("clearHighScores");
 
 highScoresList.innerHTML = highScores
   .map((score) => {
@@ -7,18 +8,7 @@ highScoresList.innerHTML = highScores
   })
   .join("");
 
-function testFind() {
-  const a = [1, 2, 3];
-  const result = a.find(function (number) {
-    if (number === 3) {
-      return true;
-    }
-    return false;
-  });
-  return result;
-}
-function testFindWithLambda() {
-  const a = [1, 2, 3];
-  const result = a.find((n) => n == 3);
-  return result;
-}
+clearHighScores.addEventListener("click", function() {
+  localStorage.clear();
+  highScoresList.innerHTML = '';
+});
