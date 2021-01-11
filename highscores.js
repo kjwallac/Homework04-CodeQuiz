@@ -8,7 +8,7 @@ highScoresList.innerHTML = highScores
   })
   .join("");
 
-clearHighScores.addEventListener("click", function() {
+clearHighScores.addEventListener("click", function () {
   localStorage.clear();
-  highScoresList.innerHTML = '';
+  highScoresList.innerHTML = "";
 });
