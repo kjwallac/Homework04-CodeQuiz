@@ -3,10 +3,10 @@ Repository for Homework 04 - Web APIs Code Quiz
 A coding assessment that may be used as part of an interview process.
 
 ## Project Screen Shots
-![index page](screenshots/HW4index.png)
-![quiz page](screenshots/HW4quiz.png)
-![end page](screenshots/HW4end.png)
-![highscores page](screenshots/HW4highscores.png)
+![index page](/screenshots/HW4index.png)
+![quiz page](/screenshots/HW4quiz.png)
+![end page](/screenshots/HW4end.png)
+![highscores page](/screenshots/HW4highscores.png)
 
 ## Code Quiz instructions
 1. Click the "Begin Quiz" button
