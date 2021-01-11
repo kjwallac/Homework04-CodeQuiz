@@ -118,7 +118,6 @@ choices.forEach((choice) => {
 //Timer
 (function () {
   function startTimer() {
-    console.log("timer suppose to go");
     var timer = setInterval(function () {
       sec--;
       document.getElementById("timer").innerHTML = "00:" + sec;
